@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node -r dotenv/config --inspect=0.0.0.0:9227 ./dist/",
-    "start:dev": "rimraf dist && npm run lint && tsc-watch --outDir ./dist --onSuccess \"npm run start\" --onFailure \"'echo Compilation Failed'\"",
+    "start:dev": "rimraf dist && tsc-watch --outDir ./dist --onSuccess \"npm run start\" --onFailure \"'echo Compilation Failed'\"",
     "build": "rimraf dist && tsc",
     "tsc": "rimraf dist && npm run lint && tsc --watch",
     "lint": "eslint --fix --ext .ts,.js src"

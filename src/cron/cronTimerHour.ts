@@ -31,8 +31,10 @@ export const cronTimerHour = async () => {
       return reminderService.create({appointment, timeType: TimeTypeEnum.HOUR});
     })
   );
-  const logPath = path.join( __dirname, 'src' ,'logs', 'logs.txt');
+
+  const logPath =  path.join(__dirname, 'logs', 'logs.txt');
   console.log(logPath);
+
   unnotifiedAppointments.forEach((app)=> {
     fs.writeFile(logPath, `${new Date().toLocaleDateString()} | 
     Привет ${app.user.name}! Вам через 2 часа к ${app.doctor.spec} в ${app.date}! \n`,
