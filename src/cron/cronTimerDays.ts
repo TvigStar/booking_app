@@ -6,7 +6,7 @@ import { IExtendedAppointment } from '../interfaces';
 
 export const cronTimerDays = async () => {
   const date = new Date();
-  date.setDate(date.getDay() +1);
+  date.setDate(date.getDate() + 1);
 
   const appointments = await appointmentService.find({
     date: {
@@ -36,9 +36,9 @@ export const cronTimerDays = async () => {
   unnotifiedAppointments.forEach((app)=> {
     fs.writeFile(logPath, `${new Date().toLocaleDateString()} | 
     Привет ${app.user.name}! Напоминаем что вы записаны к ${app.doctor.spec} завтра в  ${app.date}! \n`,
-      (err) => {
-        console.log(err);
-      });
+    (err) => {
+      console.log(err);
+    });
   });
 
 };
