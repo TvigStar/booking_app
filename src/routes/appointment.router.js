@@ -1,0 +1,10 @@
+'use strict';
+exports.__esModule = true;
+exports.appointmentRouter = void 0;
+const express_1 = require('express');
+const controller_1 = require('../controller');
+const middleware_1 = require('../middleware');
+const router = (0, express_1.Router)();
+router.post('/reserve', middleware_1.checkIsNewAppointmentValidMiddleware, controller_1.appointmentController.createAppointment);
+router.patch('/confirm', controller_1.appointmentController.acceptAppointment);
+exports.appointmentRouter = router;
