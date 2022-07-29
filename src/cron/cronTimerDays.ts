@@ -4,9 +4,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { IExtendedAppointment } from '../interfaces';
 
-export const cronTimerHour = async () => {
+export const cronTimerDays = async () => {
   const date = new Date();
-  date.setHours(date.getHours() + 2);
+  date.setDate(date.getDay() +1);
 
   const appointments = await appointmentService.find({
     date: {
@@ -19,7 +19,7 @@ export const cronTimerHour = async () => {
   const unnotifiedAppointments = [];
 
   for (const appointment of appointments) {
-    const reminder = await reminderService.findOne({appointment, timeType: TimeTypeEnum.HOUR});
+    const reminder = await reminderService.findOne({appointment, timeType: TimeTypeEnum.DAY});
     if (!reminder){
       unnotifiedAppointments.push(appointment);
     }
@@ -27,7 +27,7 @@ export const cronTimerHour = async () => {
 
   await Promise.all(
     unnotifiedAppointments.map((appointment)=>{
-      return reminderService.create({appointment, timeType: TimeTypeEnum.HOUR});
+      return reminderService.create({appointment, timeType: TimeTypeEnum.DAY});
     })
   );
 
@@ -35,10 +35,10 @@ export const cronTimerHour = async () => {
 
   unnotifiedAppointments.forEach((app)=> {
     fs.writeFile(logPath, `${new Date().toLocaleDateString()} | 
-    Привет ${app.user.name}! Вам через 2 часа к ${app.doctor.spec} в ${app.date}! \n`,
-    (err) => {
-      console.log(err);
-    });
+    Привет ${app.user.name}! Напоминаем что вы записаны к ${app.doctor.spec} завтра в  ${app.date}! \n`,
+      (err) => {
+        console.log(err);
+      });
   });
 
 };

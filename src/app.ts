@@ -10,7 +10,6 @@ import { config } from './config';
 import { appointmentRouter, doctorRouter } from './routes';
 import { userRouter } from './routes';
 import { cronJobRun } from './cron';
-import * as fs from "fs";
 
 dotenv.config();
 
@@ -24,10 +23,6 @@ class App {
 
   constructor() {
     (global as any).appRoot = path.resolve(process.cwd(), '../');
-
-    const logsDir = path.resolve(__dirname, 'logs');
-
-    fs.mkdirSync(logsDir, { recursive: true });
 
     this.app.use(morgan('dev'));
     this.app.use(helmet.default());
