@@ -1,5 +1,6 @@
 import { IDoctor } from '../interfaces';
-import { DoctorModel } from '../database';
+import { DoctorModel, UserModel } from '../database';
+import { Types } from "mongoose";
 
 class DoctorService {
   create(doctor: Partial<IDoctor>): Promise<IDoctor[]> {
@@ -16,6 +17,9 @@ class DoctorService {
     return DoctorModel.findByIdAndUpdate(id, docToUpdate).exec();
   }
 
+  deleteById(id: Types.ObjectId | string) {
+    return DoctorModel.findByIdAndRemove(id).exec();
+  }
 }
 
 export const doctorService = new DoctorService();

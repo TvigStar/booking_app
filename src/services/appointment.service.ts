@@ -25,7 +25,7 @@ class AppointmentsService {
     return AppointmentsModel.findByIdAndUpdate(id, appToUpdate).exec();
   }
 
-  deleteById(id: Types.ObjectId) {
+  deleteById(id: Types.ObjectId | string) {
     return AppointmentsModel.findByIdAndDelete(id).exec();
   }
 }
