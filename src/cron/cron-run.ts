@@ -4,7 +4,7 @@ import { cronTimerDays } from './cronTimerDays';
 
 export const cronJobRun = () => {
   cron.schedule('* * * * *', async () => {
-    console.log('CRON RUN');
+    await console.log('CRON RUN');
     await cronTimerHour();
     await cronTimerDays();
     console.log('CRON STOP');

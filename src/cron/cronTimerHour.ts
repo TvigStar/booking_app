@@ -34,10 +34,10 @@ export const cronTimerHour = async () => {
   const logPath = path.join(process.cwd(), 'src' ,'logs', 'logs.txt');
 
   unnotifiedAppointments.forEach((app)=> {
-    fs.writeFile(logPath, `${new Date().toLocaleDateString()} | 
+    fs.appendFile(logPath, `${new Date().toLocaleDateString()} | 
     Привет ${app.user.name}! Вам через 2 часа к ${app.doctor.spec} в ${app.date}! \n`,
     (err) => {
-      console.log(err);
+      if (err) {console.log(err);}
     });
   });
 

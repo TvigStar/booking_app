@@ -17,6 +17,7 @@ class AppointmentController {
 
       const dateAppointments = doctor.appointmentsAccepted.filter(app => {
         const reservedTime = new Date(app.date).setHours(0, 0, 0, 0);
+        console.log('*****',date, new Date(date));
         const newAppointmentTime = new Date(date).setHours(0, 0, 0, 0);
 
         return reservedTime === newAppointmentTime;

@@ -51,7 +51,7 @@ class App {
 
   private customErrorHandler(err: any, req: Request, res: Response, next: NextFunction): void {
     res
-      .status(err.status)
+      .status(err.status || 500)
       .json({
         message: err.message || 'Unknown Error',
         code: err.code

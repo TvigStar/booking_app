@@ -34,11 +34,12 @@ export const cronTimerDays = async () => {
   const logPath = path.join(process.cwd(), 'src' ,'logs', 'logs.txt');
 
   unnotifiedAppointments.forEach((app)=> {
-    fs.writeFile(logPath, `${new Date().toLocaleDateString()} | 
+    fs.appendFile(logPath, `${new Date().toLocaleDateString()} |
     Привет ${app.user.name}! Напоминаем что вы записаны к ${app.doctor.spec} завтра в  ${app.date}! \n`,
     (err) => {
-      console.log(err);
-    });
+      if (err) {console.log(err);}
+    }
+    );
   });
 
 };
