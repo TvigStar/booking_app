@@ -99,14 +99,14 @@ class AppointmentController {
   }
 
   async deleteAppointment(req: Request, res: Response, next: NextFunction){
-    try{
+    try {
       const {appointmentId} = req.params;
 
-      await appointmentService.deleteById(appointmentId)
+      await appointmentService.deleteById(appointmentId);
 
-      res.end()
+      res.end();
     } catch (err){
-      next(err)
+      next(err);
     }
   }
 }

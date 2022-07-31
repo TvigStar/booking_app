@@ -8,5 +8,5 @@ router.post('/reserve',
   checkIsNewAppointmentValidMiddleware,
   appointmentController.createAppointment);
 router.patch('/confirm', appointmentController.acceptAppointment);
-router.delete('/:appointmentId', appointmentController.deleteAppointment )
+router.delete('/:appointmentId', appointmentController.deleteAppointment );
 export const appointmentRouter = router;

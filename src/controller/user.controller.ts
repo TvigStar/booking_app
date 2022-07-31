@@ -13,14 +13,14 @@ class UserController {
     }
   }
   async deleteUser(req: Request, res: Response, next: NextFunction){
-    try{
+    try {
       const {userId} = req.params;
 
-      await userService.deleteById(userId)
+      await userService.deleteById(userId);
 
-      res.end()
+      res.end();
     } catch (err){
-      next(err)
+      next(err);
     }
   }
 }

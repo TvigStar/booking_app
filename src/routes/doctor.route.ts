@@ -7,5 +7,5 @@ const router = Router();
 router.post('/register',
   checkIsNewDoctorValidMiddleware,
   doctorController.createDoctor);
-router.delete('/:doctorId', doctorController.deleteDoctor)
+router.delete('/:doctorId', doctorController.deleteDoctor);
 export const doctorRouter = router;

@@ -1,6 +1,6 @@
 import { IDoctor } from '../interfaces';
-import { DoctorModel, UserModel } from '../database';
-import { Types } from "mongoose";
+import { DoctorModel } from '../database';
+import { Types } from 'mongoose';
 
 class DoctorService {
   create(doctor: Partial<IDoctor>): Promise<IDoctor[]> {

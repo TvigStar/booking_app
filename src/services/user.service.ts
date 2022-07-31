@@ -1,6 +1,6 @@
 import { IUser } from '../interfaces';
 import { UserModel } from '../database';
-import { Types } from "mongoose";
+import { Types } from 'mongoose';
 
 class UserService{
   create(user: Partial<IUser>): Promise<IUser[]> {

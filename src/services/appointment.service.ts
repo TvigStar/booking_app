@@ -26,7 +26,7 @@ class AppointmentsService {
   }
 
   deleteById(id: Types.ObjectId | string) {
-    return AppointmentsModel.findByIdAndDelete(id).exec();
+    return AppointmentsModel.findByIdAndRemove(id).exec();
   }
 }
 

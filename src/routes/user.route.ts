@@ -7,6 +7,6 @@ const router = Router();
 router.post('/register',
   checkIsNewUserValidMiddleware,
   userController.createUser);
-router.delete('/:userId', userController.deleteUser)
+router.delete('/:userId', userController.deleteUser);
 
 export const userRouter = router;
